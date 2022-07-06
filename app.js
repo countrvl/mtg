@@ -23,4 +23,3 @@ app.use(notFoundMiddleware);
 app.use(errorMiddleware);
 
 app.listen(PORT, () => { console.log(`Server running on port ${PORT}`); });
-
