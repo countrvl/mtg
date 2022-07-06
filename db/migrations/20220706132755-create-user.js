@@ -9,12 +9,15 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       pass: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       email: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       city_id: {
         type: Sequelize.INTEGER,
