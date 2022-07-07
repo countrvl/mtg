@@ -9,6 +9,7 @@ const profileRouter = require('./routes/profile.router');
 const notFoundMiddleware = require('./middlewares/notfound');
 const errorMiddleware = require('./middlewares/error');
 const cartRouter = require('./routes/cart.router');
+const { User, Card } = require('./db/models');
 
 const app = express();
 const PORT = 3000 || 3001;
