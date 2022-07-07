@@ -1,9 +1,20 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User, City } = require('../db/models');
+const {
+  Card, User, Сondition, City,
+} = require('../db/models');
 
-router.get('/', (req, res) => {
-  res.render('entries/index');
+// router.get('/', async (req, res) => {
+// const allCards = await Card.findAll({ include: [User, City, Condition] });
+//   console.log(allCards);
+//   res.render('/', { allCards });
+// });
+
+router.get('/', async (req, res) => {
+  const allCards = await Card.findAll({ include: [{ model: User, include: [{ model: City }] }, { model: Сondition }], raw: true });
+  const allCities = await City.findAll();
+  const allTitles = await Card.findAll();
+  res.render('entries/index', { allCards, allCities, allTitles });
 });
 
 router.get('/singup', async (req, res) => {
@@ -24,9 +35,9 @@ router.post('/signup', async (req, res) => {
 
   try {
     const [newUser, createdOrNot] = await User.findOrCreate({
-      where: { email: email },
+      where: { email },
       defaults: {
-        name: name,
+        name,
         city_id: findCity.id,
         pass: hashedPass,
       },
@@ -49,7 +60,7 @@ router.post('/singin', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const findedUser = await User.findOne({ where: { email: email } });
+    const findedUser = await User.findOne({ where: { email } });
     if (await bcrypt.compare(password, findedUser.pass)) {
       req.session.userId = findedUser.id;
       req.session.userName = findedUser.name;

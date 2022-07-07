@@ -9,6 +9,7 @@ module.exports = {
       },
       title: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       img: {
         type: Sequelize.TEXT,
@@ -48,8 +49,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-    },
-    );
+    });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Cards');
