@@ -35,6 +35,11 @@ const sessionConfig = {
 
 app.use(session(sessionConfig));
 
+app.use((req, res, next) => {
+  res.locals.userName = req.session?.userName;
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/profile', profileRouter);
 app.use('/cart', cartRouter);

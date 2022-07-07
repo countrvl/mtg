@@ -17,13 +17,13 @@ router.get('/', async (req, res) => {
   res.render('entries/index', { allCards, allCities, allTitles });
 });
 
-router.get('/singup', async (req, res) => {
+router.get('/signup', async (req, res) => {
   const citylist = await City.findAll();
   res.locals.userduble = false;
   res.render('entries/singup', { citylist });
 });
 
-router.get('/singin', (req, res) => {
+router.get('/signin', (req, res) => {
   res.render('entries/singin');
 });
 
@@ -31,7 +31,7 @@ router.post('/signup', async (req, res) => {
   const { name, email, password } = req.body;
   const city = req.body['сity'];
   const hashedPass = await bcrypt.hash(password, 10);
-  const findCity = City.findOne({ where: { city_name: city } });
+  const findCity = await City.findOne({ where: { city_name: city } });
 
   try {
     const [newUser, createdOrNot] = await User.findOrCreate({
@@ -49,14 +49,15 @@ router.post('/signup', async (req, res) => {
     }
 
     req.session.userId = newUser.id;
-console.log(req.session.userId );
+    req.session.userName = newUser.name;
+
     return res.redirect('/');
   } catch (error) {
     return res.sendStatus(401);
   }
 });
 
-router.post('/singin', async (req, res) => {
+router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
 
   try {

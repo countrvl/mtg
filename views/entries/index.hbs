@@ -1,23 +1,17 @@
-
-
-
-
-     {{#if isUser}}
+{{#if userName}}
 <div class="d-block p-2 col-md-5 mx-auto border-bottom border-danger  border-4" >
   <div class="h-75 fs-4 text-white  p-3  fst-italic text-center">
-    "Citadels" is a very interesting game with original rules that will be perfect for any company, regardless of age. The style of the game is very friendly, but at the same time dynamic, and it does not take much time to master the rules. The Citadels are of particular value to those who collect fantasy art: the cards of the set are distinguished by excellent execution and simply amazing elaboration of all illustrations.
+    «Цитадели» — очень интересная игра с оригинальными правилами, которая подойдет любой компании, независимо от возраста!
   </div>
 </div>
-
- {{else}}
-
+{{else}}
 <div class="d-block p-2 col-md-5 mx-auto border-bottom border-danger  border-4" >
   <div class="h-75 fs-4 text-white  p-3  fst-italic text-center">
-Чтобы иметь возможность приобрести карточки, необходимо зарегестрироваться.
+    Чтобы иметь возможность приобрести карточки, необходимо зарегестрироваться.
   </div>
 </div>
+{{/if}}
 
-  {{/if}}
 <div id="listCard">
     <div id="cards">
         <h2>Список карточек:</h2>
