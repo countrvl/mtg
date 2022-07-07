@@ -11,7 +11,7 @@ const errorMiddleware = require('./middlewares/error');
 const cartRouter = require('./routes/cart.router');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3000 || 3001;
 
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(process.env.PWD, 'views', 'partials'));
