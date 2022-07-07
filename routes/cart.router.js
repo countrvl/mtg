@@ -22,7 +22,7 @@ router.get('/', authCheck, async (req, res) => {
     include: [{
       model: Card,
       include: [{ model: Сondition },
-        { model: User, include: [{ model: City }] }],
+      { model: User, include: [{ model: City }] }],
     }],
     raw: true,
   });
@@ -33,6 +33,28 @@ router.delete('/', async (req, res) => {
   const { cardDelId } = req.body;
   try {
     await Basket.destroy({ where: { b_card_id: cardDelId } });
+    res.sendStatus(200);
+  } catch (error) {
+    res.sendStatus(418);
+  }
+});
+
+router.get('/check', async (req, res) => {
+  const userId = await User.findOne({ where: { name: req.session?.userName } });
+  // console.log(userId);
+  const cards = await Basket.findAll({
+    attributes: ['b_card_id'],
+    where: { b_user_id: userId.id },
+    raw: true,
+  });
+  const cardsId = cards.map((el) => el.b_card_id);
+  try {
+    await Card.update({ user_id: userId.id, status: false }, { where: { id: cardsId } });
+  } catch (error) {
+    res.sendStatus(418);
+  }
+  try {
+    await Basket.destroy({ where: { b_user_id: userId.id } });
     res.sendStatus(200);
   } catch (error) {
     res.sendStatus(418);
