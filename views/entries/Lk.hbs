@@ -1,81 +1,81 @@
 <div class="add">
   <div id="cards">
-        <h2>Adding a card</h2>
-    </div>
-<form class="singup" method="post" action="/entries">
-  <label for="title-input" class="block mar-b-1 text-white bg-black">Title:</label>
-  <input id="title-input" name="title" type="text" value="{{entry.title}}" tabindex="1"
-    class="block w-100 no-outline no-border pad-1 mar-b-2">
+    <h2>Добавление карточки</h2>
+  </div>
+  <form class="singup" method="post" action="/profile">
+    <label for="title-input" class="block mar-b-1 text-white bg-black">Название:</label>
+    <input id="title-input" name="title" type="text" value="{{entry.title}}" tabindex="1"
+      class="block w-100 no-outline no-border pad-1 mar-b-2">
 
-  <label for="body-textarea" class="block mar-b-1 text-white bg-black">Image:</label>
-  <textarea id="body-textarea" name="img" tabindex="2"
-    class="block w-100 h-10 no-resize no-outline no-border no-resize pad-1 mar-b-2">{{entry.body}}</textarea>
+    <label for="body-textarea" class="block mar-b-1 text-white bg-black">Изображение:</label>
+    <textarea id="body-textarea" name="img" tabindex="2"
+      class="block w-100 h-10 no-resize no-outline no-border no-resize pad-1 mar-b-2">{{entry.body}}</textarea>
 
-  <label for="title-input" class="block mar-b-1 text-white bg-black">Price:</label>
-  <input id="title-input" name="price" type="text" value="{{entry.title}}" tabindex="1"
-    class="block w-100 no-outline no-border pad-1 mar-b-2">
-    
-  <label for="title-input" class="block mar-b-1 text-white bg-black">Wear & tear:</label>
-  <input id="title-input" name="wear" type="text" value="{{entry.user_id}}" tabindex="1"
-    class="block w-100 no-outline no-border pad-1 mar-b-2">
+    <label for="title-input" class="block mar-b-1 text-white bg-black">Цена:</label>
+    <input id="title-input" name="price" type="text" value="{{entry.title}}" tabindex="1"
+      class="block w-100 no-outline no-border pad-1 mar-b-2">
 
-  <label for="title-input" class="block mar-b-1 text-white bg-black">City:</label>
-  <input id="title-input" name="city" type="text" value="{{entry.user_id}}" tabindex="1"
-    class="block w-100 no-outline no-border pad-1 mar-b-2">
+    <label for="title-input" class="block mar-b-1 text-white bg-black">Состояние:</label>
 
-  <input type="submit" value="Publish" tabindex="3"
-    class="block button w-100 mar-t-4 mar-b-3 pad-2 round-1 text-c center no-border no-outline">
-</form>
+    <select name="wear" style="padding: 6px 0px; border-radius: 10px"
+      class=" block w-100 no-outline no-border pad-1 mar-b-2">
+      {{#each allСondition}}
+      <option value="{{id}}">
+        {{condition_name}}
+      </option>
+      {{/each}}
+    </select>
+
+
+    <input style="border-radius: 9px; margin: 20px 0px; padding: 6px 0px;" type="submit" value="Publish" tabindex="3"
+      class="block button w-100 mar-t-4 mar-b-3 pad-2 round-1 text-c center no-border no-outline">
+  </form>
 </div>
 
 <div id="listCard">
-    <div id="cards">
-        <h2>Added cards</h2>
-    </div>
-<div id="body">
-   {{#each allCardsBuy}}
+  <div id="cards">
+    <h2>Карты в продаже</h2>
+  </div>
+  <div id="body">
+    {{#each allCardsBuy}}
     <div id="box">
       <div id="title">
-            <h3>{{title}}</h3>
-        </div>
-        <div class="img">
-            <img src="{{img}}" alt="">
-        </div>
-          <div id="ganre">
-            <p>Price: {{price}}$</p>
-            <p>Wear & tear: {{'Сondition.condition_name'}}</p>
-            <p>Seller's city: {{'User.City.city_name'}}</p>
-        </div>
-        <div>
-        <button type="button" class="btn btn-outline-dark">Buy</button>
-        </div>
-    </div>
-     {{!-- {{/each}} --}}
-    </div>
-    </div>
+        <h3>{{title}}</h3>
+      </div>
+      <div class="img">
+        <img src="{{img}}" alt="">
+      </div>
+      <div id="ganre">
+        <p>Цена: {{price}}$</p>
+        <p>Состояние: {{'Сondition.condition_name'}}</p>
+        <p>Город продавца: {{'User.City.city_name'}}</p>
+      </div>
 
-    <div id="listCard">
-    <div id="cards">
-        <h2>Купленные Карты</h2>
     </div>
-<div id="body">
-   {{#each mySaleCards}}
+    {{/each}}
+  </div>
+</div>
+
+<div id="listCard">
+  <div id="cards">
+    <h2>Купленные Карты</h2>
+  </div>
+  <div id="body">
+    {{#each mySaleCards}}
     <div id="box">
       <div id="title">
-            <h3>{{title}}</h3>
-        </div>
-        <div class="img">
-            <img src="{{img}}" alt="">
-        </div>
-          <div id="ganre">
-            <p>Price: {{price}}$</p>
-            <p>Wear & tear: {{'Сondition.condition_name'}}</p>
-            <p>Seller's city: {{'User.City.city_name'}}</p>
-        </div>
-        <div>
-        <button type="button" class="btn btn-outline-dark">Buy</button>
-        </div>
+        <h3>{{title}}</h3>
+      </div>
+      <div class="img">
+        <img src="{{img}}" alt="">
+      </div>
+      <div id="ganre">
+        <p>Price: {{price}}$</p>
+        <p>Wear & tear: {{'Сondition.condition_name'}}</p>
+        <p>Seller's city: {{'User.City.city_name'}}</p>
+      </div>
+
     </div>
-     {{/each}}
-    </div>
-    </div>
+    {{/each}}
+  </div>
+</div>
