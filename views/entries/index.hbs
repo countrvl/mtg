@@ -25,7 +25,7 @@
 </select>
        </div>
 
-<div id="body">
+<div id="body" class="addcards">
     {{#each allCards}}
     <div class="card" id="box">
       <div id="title">
@@ -40,7 +40,7 @@
             <p>Город продавца: {{'User.City.city_name'}}</p>
         </div>
         <div>
-        <button name="btn_main" id={{this.id}}  type="button" class="btn btn-outline-dark">Buy</button>
+        <button name="btn_main" id={{this.id}}  type="button" class="btn btn-outline-dark">Добавить в корзину</button>
         </div>
     </div>
         {{/each}}

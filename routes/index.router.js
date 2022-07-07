@@ -4,14 +4,12 @@ const {
   Card, User, Сondition, City,
 } = require('../db/models');
 
-// router.get('/', async (req, res) => {
-// const allCards = await Card.findAll({ include: [User, City, Condition] });
-//   console.log(allCards);
-//   res.render('/', { allCards });
-// });
-
 router.get('/', async (req, res) => {
-  const allCards = await Card.findAll({ include: [{ model: User, include: [{ model: City }] }, { model: Сondition }], raw: true });
+  const allCards = await Card.findAll({
+    include: [{ model: User, include: [{ model: City }] },
+      { model: Сondition }],
+    raw: true,
+  });
   const allCities = await City.findAll();
   const allTitles = await Card.findAll();
   res.render('entries/index', { allCards, allCities, allTitles });

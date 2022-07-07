@@ -5,7 +5,7 @@
 
   <link rel="stylesheet" href="/stylesheets/application.css">
 
-  <script defer src="/js/application.js"></script>
+  <script defer src="/js/applications.js"></script>
 
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
@@ -20,12 +20,13 @@ crossorigin="anonymous">
   <header role="banner" class="mar-t-5 pad-t-2 pad-b-4 pad-s-1 wrap-float bg-white">
     <div class="max-w-700 center wrap-float" id="navbar">
 
-        {{#if isUser}}
+        {{!-- {{#if isUser}} --}}
 <nav class="navbar navbar-expand-lg bg-black">
   <div class="container-fluid">
     
-<select class="form-select w-25 p-3" aria-label="Default select example">
-  <option selected>Поиск по городу</option>
+
+<select class=" fs-4 form-select w-25 p-3" aria-label="Default select example">
+  <option  selected>Поиск по городу</option>
   {{#each allCities}}
   <option value="1">{{this.city_name}}</option>
   {{/each}}
@@ -33,8 +34,8 @@ crossorigin="anonymous">
 
 <div class="uk-navbar-left"> 
     <div class="collapse navbar-collapse h4 bg-black" id="navbarSupportedContent">
-        {{#if userName}}
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {{#if userName}}
         <li class="nav-item">
           <a class="nav-link active text-white bg-black" aria-current="page" href="/profile">{{userName}}</a>
         </li>
@@ -44,10 +45,6 @@ crossorigin="anonymous">
         <li class="nav-item">
           <a href="/cart"><img class="imgcart" src="/fon/istockphoto-1094337676-170667a.jpeg"  alt="lorem"></a>
         </li>
-         <li class="nav-item">
-          <a class="nav-link text-white bg-black" href="/">Главная</a>
-        </li>
-</ul>
         {{else}}
         <li class="nav-item">
           <a class="nav-link text-white bg-black" href="/signin">Войти</a>
@@ -55,37 +52,7 @@ crossorigin="anonymous">
         <li class="nav-item">
           <a class="nav-link text-white bg-black" href="/signup">Зарегистрироваться</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white bg-black" href="/">Главная</a>
-        </li>
         {{/if}}
-      </ul>
-
-    </div>
-    </div>
-    
-  </div>
-</nav>
-          {{else}}
-<nav class="navbar navbar-expand-lg bg-black">
-  <div class="container-fluid">
-    
-<select class="form-select w-25 p-3" aria-label="Default select example">
-  <option selected>Поиск по городу</option>
-  {{#each allCities}}
-  <option value="1">{{this.city_name}}</option>
-  {{/each}}
-</select>
-
-<div class="uk-navbar-left"> 
-    <div class="collapse navbar-collapse h4 bg-black" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active text-white bg-black" aria-current="page" href="/signup">Регистрация</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white bg-black" href="/signin">Вход</a>
-        </li>
         <li class="nav-item">
           <a class="nav-link text-white bg-black" href="/">Главная</a>
         </li>
@@ -95,8 +62,6 @@ crossorigin="anonymous">
     
   </div>
 </nav>
- {{/if}}
-
 
     </div>
   </header>
