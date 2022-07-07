@@ -8,6 +8,7 @@ const indexRouter = require('./routes/index.router');
 const profileRouter = require('./routes/profile.router');
 const notFoundMiddleware = require('./middlewares/notfound');
 const errorMiddleware = require('./middlewares/error');
+const cartRouter = require('./routes/cart.router');
 
 const app = express();
 const PORT = 3000;
@@ -35,8 +36,13 @@ app.use(session(sessionConfig));
 
 app.use('/', indexRouter);
 app.use('/profile', profileRouter);
+app.use('/cart', cartRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);
+
+app.get('/', (req, res) => {
+  res.render('/');
+});
 
 app.listen(PORT, () => { console.log(`Server running on port ${PORT}`); });

@@ -3,7 +3,15 @@ const bcrypt = require('bcrypt');
 const { User } = require('../db/models');
 
 router.get('/', (req, res) => {
-  res.render('test_back_index');
+  res.render('entries/index');
+});
+
+router.get('/singup', (req, res) => {
+  res.render('entries/singup');
+});
+
+router.get('/singin', (req, res) => {
+  res.render('entries/singin');
 });
 
 router.post('/signup', async (req, res) => {
