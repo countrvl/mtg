@@ -33,18 +33,18 @@
         <h2>Added cards</h2>
     </div>
 <div id="body">
-   {{!-- {{#each cards}} --}}
+   {{#each allCardsBuy}}
     <div id="box">
       <div id="title">
-            <h3>Name card</h3>
+            <h3>{{title}}</h3>
         </div>
         <div class="img">
-            <img src="https://i.pinimg.com/736x/b1/3b/81/b13b81d79fe91e35008feeaf4c5b04d7.jpg" alt="">
+            <img src="{{img}}" alt="">
         </div>
           <div id="ganre">
-            <p>Price: 100$</p>
-            <p>Wear & tear: old</p>
-            <p>Seller's city: Ufa</p>
+            <p>Price: {{price}}$</p>
+            <p>Wear & tear: {{'Сondition.condition_name'}}</p>
+            <p>Seller's city: {{'User.City.city_name'}}</p>
         </div>
         <div>
         <button type="button" class="btn btn-outline-dark">Buy</button>
@@ -56,24 +56,26 @@
 
     <div id="listCard">
     <div id="cards">
-        <h2>Browsing history</h2>
+        <h2>Купленные Карты</h2>
     </div>
 <div id="body">
+   {{#each mySaleCards}}
     <div id="box">
       <div id="title">
-            <h3>Name card</h3>
+            <h3>{{title}}</h3>
         </div>
         <div class="img">
-            <img src="https://i.pinimg.com/736x/b1/3b/81/b13b81d79fe91e35008feeaf4c5b04d7.jpg" alt="">
+            <img src="{{img}}" alt="">
         </div>
           <div id="ganre">
-            <p>Price: 100$</p>
-            <p>Wear & tear: old</p>
-            <p>Seller's city: Ufa</p>
+            <p>Price: {{price}}$</p>
+            <p>Wear & tear: {{'Сondition.condition_name'}}</p>
+            <p>Seller's city: {{'User.City.city_name'}}</p>
         </div>
         <div>
         <button type="button" class="btn btn-outline-dark">Buy</button>
         </div>
     </div>
+     {{/each}}
     </div>
     </div>
