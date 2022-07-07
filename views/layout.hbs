@@ -20,16 +20,10 @@ crossorigin="anonymous">
   <header role="banner" class="mar-t-5 pad-t-2 pad-b-4 pad-s-1 wrap-float bg-white">
     <div class="max-w-700 center wrap-float" id="navbar">
 
-        {{!-- {{#if isUser}} --}}
+        {{#if isUser}}
 <nav class="navbar navbar-expand-lg bg-black">
   <div class="container-fluid">
     
-  {{!-- <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="City search" aria-label="Search">
-        <button class="btn btn-outline-light" type="submit">Search</button>
-      </form>
- --}}
-
 <select class="form-select w-25 p-3" aria-label="Default select example">
   <option selected>Поиск по городу</option>
   {{#each allCities}}
@@ -58,26 +52,28 @@ crossorigin="anonymous">
     
   </div>
 </nav>
-          {{!-- {{else}}
+          {{else}}
 <nav class="navbar navbar-expand-lg bg-black">
   <div class="container-fluid">
     
-  <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="City search" aria-label="Search">
-        <button class="btn btn-outline-light" type="submit">Search</button>
-      </form>
+<select class="form-select w-25 p-3" aria-label="Default select example">
+  <option selected>Поиск по городу</option>
+  {{#each allCities}}
+  <option value="1">{{this.city_name}}</option>
+  {{/each}}
+</select>
 
 <div class="uk-navbar-left"> 
     <div class="collapse navbar-collapse h4 bg-black" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active text-white bg-black" aria-current="page" href="/singup">Sing Up</a>
+          <a class="nav-link active text-white bg-black" aria-current="page" href="/singup">Регистрация</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white bg-black" href="/singin">Sing In</a>
+          <a class="nav-link text-white bg-black" href="/singin">Вход</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white bg-black" href="/">Home</a>
+          <a class="nav-link text-white bg-black" href="/">Главная</a>
         </li>
       </ul>
     </div>
@@ -85,7 +81,7 @@ crossorigin="anonymous">
     
   </div>
 </nav>
- {{/if}} --}}
+ {{/if}}
 
 
     </div>

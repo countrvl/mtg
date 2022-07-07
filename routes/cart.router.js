@@ -1,9 +1,10 @@
 const router = require('express').Router();
-const { Card, User, Condition, City } = require('../db/models');
+const {
+  Card, User, Condition, City,
+} = require('../db/models');
 
 router.get('/', (req, res) => {
-  res.redirect('/');
+  res.render('entries/Cart');
 });
-
 
 module.exports = router;

@@ -15,3 +15,12 @@
 //     }
 //   }
 // });
+
+const body = document.querySelector('#body');
+body.addEventListener('click', async (e) => {
+  if (e.target === 'button') {
+    e.preventDefault();
+    const cardId = e.target.id;
+    console.log('---->', cardId);
+  }
+});
