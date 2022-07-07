@@ -2,6 +2,7 @@ const router = require('express').Router();
 const {
   Card, User, Сondition, City,
 } = require('../db/models');
+
 //
 // router.get('/', (req, res) => {
 // res.sendStatus(200);
@@ -19,7 +20,18 @@ router.get('/', async (req, res) => {
   });
 });
 
-router.post('/entries', (req, res) => {
+router.post('/', async (req, res) => {
+  const {
+    title, img, price, wear,
+  } = req.body;
 
+  const newCard = await Card.create({
+    title,
+    img,
+    price,
+    user_id: req.session.usedId,
+    wear,
+  });
+  res.redirect('/profile');
 });
 module.exports = router;
