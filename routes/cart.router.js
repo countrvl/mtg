@@ -1,8 +1,38 @@
 const router = require('express').Router();
+const nodemailer = require('nodemailer');
 const authCheck = require('../middlewares/error');
 const {
   Card, User, Сondition, City, Basket,
 } = require('../db/models');
+
+async function mailer(email) {
+  // const testEmailAccount = await nodemailer.createTestAccount();
+
+  const transporter = await nodemailer.createTransport({
+    // host: 'smtp.ethereal.email',
+    // port: 587,
+    // secure: false,
+    service: 'gmail',
+    auth: {
+      // user: testEmailAccount.user,
+      // pass: testEmailAccount.pass,
+      user: 'countrvl@gmail.com',
+      pass: 'jsyijgxlxpzaejsb',
+    },
+  });
+
+  const result = await transporter.sendMail({
+    from: '"Node js" <nodejs@example.com>',
+    // to: 'user@example.com, countrvl@gmail.com',
+    to: `${email}`,
+    subject: 'Магазин карт MTG',
+    text: 'Сообщение от магазина MTG',
+    html:
+      'Ваша карта продана',
+  });
+  console.log(result);
+  return result;
+}
 
 // router.get('/', (req, res) => {
 //   res.render('entries/Cart');
@@ -40,6 +70,7 @@ router.delete('/', async (req, res) => {
 });
 
 router.get('/check', async (req, res) => {
+  mailer('countrvl@yandex.ru');
   const userId = await User.findOne({ where: { name: req.session?.userName } });
   // console.log(userId);
   const cards = await Basket.findAll({
@@ -56,6 +87,12 @@ router.get('/check', async (req, res) => {
   try {
     await Basket.destroy({ where: { b_user_id: userId.id } });
     res.sendStatus(200);
+  } catch (error) {
+    res.sendStatus(418);
+  }
+  try {
+    // mailer(emails);
+    // res.sendStatus(200);
   } catch (error) {
     res.sendStatus(418);
   }
