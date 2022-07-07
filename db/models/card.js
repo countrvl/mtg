@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(Condition, { foreignKey: 'condition_id' });
       this.belongsTo(User, { foreignKey: 'user_id' });
       this.hasMany(Basket, { foreignKey: 'b_cards_id' });
-
     }
   }
   Card.init({

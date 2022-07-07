@@ -1,19 +1,12 @@
 const router = require('express').Router();
+const {Card} = require('../db/models')
 
 router.get('/', (req, res) => {
   res.redirect('/');
 });
 
-// router.get('/add', (req, res) => {
-  
+// router.post('/', async (req, res) => {
+// const allCards = await Card.findAll({})
 // });
-// router.get('/del/:id', (req, res) => {
-
-// });
-
-// router.get('/cart', (req, res) => {
-
-// });
-
 
 module.exports = router;
