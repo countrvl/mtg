@@ -1,41 +1,26 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Cards', {
+    await queryInterface.createTable('Baskets', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      title: {
-        type: Sequelize.STRING,
-
-      img: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      price: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      status: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: true,
-      },
-      condition_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'Сonditions',
-          },
-          key: 'id',
-        },
-      },
-      user_id: {
+      b_user_id: {
         type: Sequelize.INTEGER,
         references: {
           model: {
             tableName: 'Users',
+          },
+          key: 'id',
+        },
+      },
+      b_card_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Cards',
           },
           key: 'id',
         },
@@ -51,6 +36,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Cards');
+    await queryInterface.dropTable('Baskets');
   },
 };
