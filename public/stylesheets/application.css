@@ -10,6 +10,10 @@
   margin-top: 50px;
 }
 
+/* #search{
+  margin-right: 400px;
+} */
+
 .singin{
   height: 600px;
   width: 400px;
@@ -64,7 +68,14 @@
   height: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: row;
+
+  /* flex-direction: column; */
+  /* justify-content: space-around; */
+}
+
+.space{
+  height: 400px;
 }
 
 #cards{
@@ -86,6 +97,11 @@
   flex-direction: column;
   align-items: center;
   margin: 30px;
+}
+
+.imgcart{
+  height: 60px;
+  width: 60px;
 }
 
 img{

@@ -13,43 +13,43 @@
 
 <div class="d-block p-2 col-md-5 mx-auto border-bottom border-danger  border-4" >
   <div class="h-75 fs-4 text-white  p-3  fst-italic text-center">
-To be able to add a card or buy it, you need to go through authorization
+Чтобы иметь возможность приобрести карточки, необходимо зарегестрироваться.
   </div>
 </div>
 
   {{/if}}
 <div id="listCard">
     <div id="cards">
-        <h2>List of Cards:</h2>
+        <h2>Список карточек:</h2>
     </div>
      <div class="container-fluid"></div>
   <select class="form-select w-25 p-3" aria-label="Default select example">
-  <option selected>Title search</option>
-  <option value="1">title1</option>
-  <option value="2">title2</option>
-  <option value="3">title3</option>
+  <option selected>Поиск по названию</option>
+    {{#each allTitles}}
+  <option value="1">{{this.title}}</option>
+  {{/each}}
 </select>
        </div>
 
 <div id="body">
-    {{!-- {{#each cards}} --}}
-    <div id="box">
+    {{#each allCards}}
+    <div class="card" id="box">
       <div id="title">
-            <h3>Name card</h3>
+            <h3>{{this.title}}</h3>
         </div>
         <div class="img">
-            <img src="https://i.pinimg.com/736x/b1/3b/81/b13b81d79fe91e35008feeaf4c5b04d7.jpg" alt="">
+            <img src="{{this.img}}" alt="">
         </div>
           <div id="ganre">
-            <p>Price: 100$</p>
-            <p>Wear & tear: old</p>
-            <p>Seller's city: Ufa</p>
+            <p>Цена: {{this.price}} $</p>
+            <p>Состояние: {{'Сondition.condition_name'}}</p>
+            <p>Город продавца: {{'User.City.city_name'}}</p>
         </div>
         <div>
         <button type="button" class="btn btn-outline-dark">Buy</button>
         </div>
-        {{!-- {{/each}} --}}
     </div>
+        {{/each}}
 
 </div>
 </div>
