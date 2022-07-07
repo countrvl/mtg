@@ -33,7 +33,7 @@ router.post('/signup', async (req, res) => {
     }
 
     req.session.userId = newUser.id;
-
+console.log(req.session.userId );
     return res.redirect('/');
   } catch (error) {
     return res.sendStatus(401);
