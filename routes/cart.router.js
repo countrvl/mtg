@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const authCheck = require('../middlewares/error');
 const {
   Card, User, Сondition, City, Basket,
 } = require('../db/models');
@@ -7,14 +8,14 @@ const {
 //   res.render('entries/Cart');
 // });
 
-router.post('/add', async (req, res) => {
+router.post('/add', authCheck, async (req, res) => {
   const { cardId } = req.body;
   const userId = await User.findOne({ where: { name: req.session?.userName } });
   await Basket.create({ b_user_id: userId.id, b_card_id: cardId });
   res.sendStatus(200);
 });
 
-router.get('/', async (req, res) => {
+router.get('/', authCheck, async (req, res) => {
   const userId = await User.findOne({ where: { name: req.session?.userName } });
   const addCards = await Basket.findAll({
     where: { b_user_id: userId.id },

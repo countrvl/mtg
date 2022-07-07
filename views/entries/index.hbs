@@ -40,8 +40,13 @@
             <p>Город продавца: {{'User.City.city_name'}}</p>
         </div>
         <div>
+        {{#if userName}}
         <button name="btn_main" id={{this.id}}  type="button" class="btn btn-outline-dark">Добавить в корзину</button>
+{{/if}}
         </div>
+
+
+
     </div>
         {{/each}}
 
