@@ -1,0 +1,48 @@
+
+<div > 
+
+<div id="listCard">
+     {{#if isUser}}
+<div class="info">
+    <h4> "Citadels" is a very interesting game with original rules that will be perfect for any company, regardless of age. The style of the game is very friendly, but at the same time dynamic, and it does not take much time to master the rules. The Citadels are of particular value to those who collect fantasy art: the cards of the set are distinguished by excellent execution and simply amazing elaboration of all illustrations.</h4>
+</div>
+ {{else}}
+ <div class="info1">
+    <h4> To be able to add a card or buy it, you need to go through authorization</h4>
+</div>
+  {{/if}}
+    <div id="cards">
+        <h2>List of Cards:</h2>
+    </div>
+     <div class="container-fluid"></div>
+  <select class="form-select w-25 p-3" aria-label="Default select example">
+  <option selected>Title search</option>
+  <option value="1">title1</option>
+  <option value="2">title2</option>
+  <option value="3">title3</option>
+</select>
+       </div>
+
+<div id="body">
+    {{!-- {{#each cards}} --}}
+    <div id="box">
+      <div id="title">
+            <h3>Name card</h3>
+        </div>
+        <div class="img">
+            <img src="https://i.pinimg.com/736x/b1/3b/81/b13b81d79fe91e35008feeaf4c5b04d7.jpg" alt="">
+        </div>
+          <div id="ganre">
+            <p>Price: 100$</p>
+            <p>Wear & tear: old</p>
+            <p>Seller's city: Ufa</p>
+        </div>
+        <div>
+        <button type="button" class="btn btn-outline-dark">Buy</button>
+        </div>
+        {{!-- {{/each}} --}}
+    </div>
+
+</div>
+</div>
+</div>

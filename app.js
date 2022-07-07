@@ -24,4 +24,8 @@ app.use('/cart', cartRouter);
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);
 
+app.get('/', (req, res) => {
+  res.render('/');
+});
+
 app.listen(PORT, () => { console.log(`Server running on port ${PORT}`); });
