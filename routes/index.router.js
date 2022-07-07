@@ -61,7 +61,7 @@ router.post('/singin', async (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-  // res.locals.usersession = false;
+  // res.locals.usersession = false
   req.session.destroy();
   res.clearCookie('userId');
   res.redirect('/');
