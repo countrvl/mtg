@@ -17,8 +17,10 @@ router.get('/', async (req, res) => {
   res.render('entries/index', { allCards, allCities, allTitles });
 });
 
-router.get('/singup', (req, res) => {
-  res.render('entries/singup');
+router.get('/singup', async (req, res) => {
+  const citylist = await City.findAll();
+  res.locals.userduble = false;
+  res.render('entries/singup', { citylist });
 });
 
 router.get('/singin', (req, res) => {
@@ -26,23 +28,24 @@ router.get('/singin', (req, res) => {
 });
 
 router.post('/signup', async (req, res) => {
-  const {
-    name, city, email, password,
-  } = req.body;
+  const { name, email, password } = req.body;
+  const city = req.body['сity'];
   const hashedPass = await bcrypt.hash(password, 10);
+  const findCity = City.findOne({ where: { city_name: city } });
 
   try {
     const [newUser, createdOrNot] = await User.findOrCreate({
       where: { email },
       defaults: {
         name,
-        city_id: city,
-        password: hashedPass,
+        city_id: findCity.id,
+        pass: hashedPass,
       },
     });
 
     if (!createdOrNot) {
-      return res.send('Пользователь с таким email уже существует').end();
+      res.locals.userduble = !createdOrNot;
+      return res.render('entries/singup');
     }
 
     req.session.userId = newUser.id;
@@ -53,13 +56,14 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-router.post('/login', async (req, res) => {
+router.post('/singin', async (req, res) => {
   const { email, password } = req.body;
 
   try {
     const findedUser = await User.findOne({ where: { email } });
-    if (await bcrypt.compare(password, findedUser.password)) {
+    if (await bcrypt.compare(password, findedUser.pass)) {
       req.session.userId = findedUser.id;
+      req.session.userName = findedUser.name;
       return res.redirect('/');
     }
   } catch (error) {
@@ -68,6 +72,7 @@ router.post('/login', async (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
+  // res.locals.usersession = false
   req.session.destroy();
   res.clearCookie('userId');
   res.redirect('/');
