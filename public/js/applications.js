@@ -15,7 +15,7 @@
 //     }
 //   }
 // });
-
+const btnCheck = document.querySelector('#check');
 const body = document.querySelector('#body');
 body.addEventListener('click', async (e) => {
   if (e.target.tagName === 'BUTTON') {
@@ -50,5 +50,16 @@ body.addEventListener('click', async (e) => {
         alert('Произошла ошибка');
       }
     }
+  }
+});
+
+btnCheck.addEventListener('click', async (el) => {
+  const response = await fetch('/cart/check');
+
+  if (response.ok) {
+    alert('Покупка завершена');
+    window.location.replace('/');
+  } else {
+    alert('Произошла ошибка');
   }
 });
