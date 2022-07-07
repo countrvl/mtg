@@ -1,0 +1,17 @@
+<form class="singin" action='/singin' method='post'>
+  {{#if usernotcreate}}
+    <label class="form-label text-white bg-black">Пользователь с таким email не найден</label>
+  {{/if}}
+
+  <div class="mb-3">
+    <label for="useremail" class="form-label text-white bg-black">Почта</label>
+    <input name="email" type="email" class="form-control" id="useremail">
+  </div>
+
+  <div class="mb-3">
+    <label for="userPassword1" class="form-label text-white bg-black">Пароль</label>
+    <input name="password" type="password" class="form-control" id="userPassword1">
+  </div>
+
+  <button type="submit" class="btn btn-outline-light">Войти</button>
+</form>
