@@ -71,7 +71,7 @@
   flex-direction: row;
 
   /* flex-direction: column; */
-  /* justify-content: space-around; */
+  justify-content: space-around;
 }
 
 .space{
@@ -87,6 +87,10 @@
   color:white;
   border-radius: 10px;
   opacity: 0.9;  
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+margin: 20px;
 }
 
 #box{
@@ -117,7 +121,7 @@ img{
 #ganre{
   padding-top: 10px;
   line-height: 15px;
-  font-size: 15px;
+  font-size: 18px;
   text-align: left;
   color: rgb(32, 19, 45);
 }

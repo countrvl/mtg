@@ -1,16 +1,11 @@
-<form class="singup" action='/signup' method='post'>
-  {{#if userduble}}
-    <label class="form-label text-white bg-black">Пользователь с таким email уже существует</label>
+<form class="singin" action='/signin' method='post'>
+  {{#if usernotcreate}}
+    <label class="form-label text-white bg-black">Пользователь с таким email не найден</label>
   {{/if}}
 
   <div class="mb-3">
-    <label for="userName" class="form-label text-white bg-black">Имя</label>
-    <input name="name" type="text" class="form-control" id="userName">
-  </div>
-
-  <div class="mb-3">
-    <label for="userEmail1" class="form-label text-white bg-black">Почта</label>
-    <input name="email" type="email" class="form-control" id="userEmail1">
+    <label for="useremail" class="form-label text-white bg-black">Почта</label>
+    <input name="email" type="email" class="form-control" id="useremail">
   </div>
 
   <div class="mb-3">
@@ -18,12 +13,5 @@
     <input name="password" type="password" class="form-control" id="userPassword1">
   </div>
 
-  <div class="mb-3">
-    <label for="selectvalue" class="form-label text-white bg-black">Город</label>
-    <select name="сity" class="form-control"  id="selectvalue">
-      {{#each citylist}}<option>{{this.city_name}}</option>{{/each}}
-    </select>
-  </div>
-
-  <button type="submit" class="btn btn-outline-light">Отправить</button>
+  <button type="submit" class="btn btn-outline-light">Войти</button>
 </form>
