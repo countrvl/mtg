@@ -5,7 +5,7 @@
 
   <link rel="stylesheet" href="/stylesheets/application.css">
 
-  <script defer src="/js/application.js"></script>
+  <script defer src="/js/applications.js"></script>
   <script defer src="/js/filter.js"></script>
 
 <!-- CSS only -->
@@ -21,42 +21,36 @@ crossorigin="anonymous">
   <header role="banner" class="mar-t-5 pad-t-2 pad-b-4 pad-s-1 wrap-float bg-white">
     <div class="max-w-700 center wrap-float" id="navbar">
 
-        {{!-- {{#if isUser}} --}}
-<nav class="navbar navbar-expand-lg bg-black">
-  <div class="container-fluid">
+<nav class="navbar justify-content-end bg-black fixed-top p-4 ">
 
-<div class="uk-navbar-left"> 
-    <div class="collapse navbar-collapse h4 bg-black" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        {{#if userName}}
-        <li class="nav-item">
-          <a class="nav-link active text-white bg-black" aria-current="page" href="/profile">{{userName}}</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white bg-black" href="/logout">Выйти</a>
-        </li>
-        <li class="nav-item">
-          <a href="/cart"><img class="imgcart" src="/fon/istockphoto-1094337676-170667a.jpeg"  alt="lorem"></a>
-        </li>
-        {{else}}
-        <li class="nav-item">
-          <a class="nav-link text-white bg-black" href="/signin">Войти</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white bg-black" href="/signup">Зарегистрироваться</a>
-        </li>
-        {{/if}}
-        <li class="nav-item">
-          <a class="nav-link text-white bg-black" href="/">Главная</a>
-        </li>
-      </ul>
-    </div>
-    </div>
-    
-  </div>
+<ul class="nav justify-content-end">
+   <li class="nav-item">
+    <a class="nav-link text-white bg-black fs-4" href="/">Главная</a>
+    </li>
+  {{#if userName}}
+  <li class="nav-item">
+    <a class="nav-link active text-white bg-black fs-4" aria-current="page" href="/profile">{{userName}}</a>
+  </li>
+     <li class="nav-item">
+        <a href="/cart"><img class="imgcart" src="/fon/istockphoto-1094337676-170667a.jpeg"  alt="lorem"></a>
+      </li>
+    <li class="nav-item">
+       <a class="nav-link text-white bg-black fs-4" href="/logout">Выйти</a>
+    </li>
+   {{else}}
+  <li class="nav-item">
+    <a class="nav-link active text-white bg-black fs-4" aria-current="page" href="/signin">Войти</a>
+  </li>
+    <li class="nav-item">
+      <a class="nav-link text-white bg-black fs-4" href="/signup">Зарегистрироваться</a>
+    </li>
+    {{/if}}
+  
+</ul>
+
 </nav>
-
     </div>
+
   </header>
   <div>
     <div id="body_back">
@@ -66,6 +60,14 @@ crossorigin="anonymous">
       
     </div>
   </div>
+  {{!-- <div class="card text-center text-white row-fluid bg-black"> --}}
+  {{!-- <div class="card-body  ">
+    <p class="card-text fst-italic ">Над проектом старались Владимир, Фредерик, Елизавета, Кирилл .</p>
+  </div> --}}
+  <div class="card-footer text-muted-white ">
+    created by tigers
+  </div>
+{{!-- </div> --}}
 </body>
 
 </html>

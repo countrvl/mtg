@@ -1,3 +1,5 @@
+<div class="space" ></div>
+
 {{#if userName}}
 <div class="d-block p-2 col-md-5 mx-auto border-bottom border-danger  border-4" >
   <div class="h-75 fs-4 text-white  p-3  fst-italic text-center">
@@ -12,28 +14,31 @@
 </div>
 {{/if}}
 
+    {{!-- <div id="cards">
+        <h2>Список карточек:</h2>
+    </div> --}}
+
   <div data-findbox id="listCard">
-    <div id="cards">
-      <h2>Список карточек:</h2>
-    </div>
-    <div style="display:flex;flex-direction:row">
-      <form action="" method="get"></form>
-      <select data-selectCity class="form-select w-25 p-3" aria-label="Default select example">
-        <option selected>Поиск по городу</option>
+    <div>
+      <select data-search1 class=" fs-5 form-select w-25 p-2" aria-label="Default select example">
+        <option value="0" selected>Поиск по городу</option>
         {{#each allCities}}
         <option value={{this.city_name}}>{{this.city_name}}</option>
         {{/each}}
       </select>
-      <select class="form-select w-25 p-3" aria-label="Default select example">
-        <option selected>Поиск по названию</option>
-        {{#each allTitles}}
-        <option>{{this.title}}</option>
-        {{/each}}
-      </select>
+    </div>
+    <div class="d-block p-2" ></div>
+      <div>
+        <select data-search2 class="fs-5 form-select w-25 p-2" aria-label="Default select example">
+          <option value="0" selected>Поиск по названию</option>
+          {{#each allTitles}}
+          <option value='{{this.title}}'>{{this.title}}</option>
+          {{/each}}
+        </select>
     </div>
   </div>
 
-  <div id="body" data-boxcard>
+<div data-boxcard id="body" class="addcards">
     {{#each allCards}}
     <div  class="card" id="box">
       <div id="title">
@@ -48,8 +53,14 @@
             <p>Город продавца: {{'User.City.city_name'}}</p>
         </div>
         <div>
-        <button type="button" class="btn btn-outline-dark">Buy</button>
+        {{!-- НЕ РАБОТАЕТ --}}
+        {{!-- {{#if userName}} --}} 
+        <button name="btn_main" id={{this.id}}  type="button" class="btn btn-outline-dark">Добавить в корзину</button>
+{{!-- {{/if}} --}}
         </div>
+
+
+
     </div>
         {{/each}}
   </div>

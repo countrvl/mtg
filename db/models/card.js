@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ Сondition, User, Basket }) {
       this.belongsTo(Сondition, { foreignKey: 'condition_id' });
       this.belongsTo(User, { foreignKey: 'user_id' });
-      this.hasMany(Basket, { foreignKey: 'b_cards_id' });
+      this.hasMany(Basket, { foreignKey: 'b_card_id' });
     }
   }
   Card.init({

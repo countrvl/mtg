@@ -20,38 +20,33 @@ function showCards(obj) {
 }
 
 let cards = [];
-let filters = [];
 
 const filterCity = document.querySelector('[data-findbox]');
-filterCity.addEventListener('change', async (e) => {
-  const search = e.target.value;
-  if (!(search === 'Поиск по городу') && !(search === 'Поиск по названию')) {
-    filters.push(search);
-    console.log(filters);
-  }
+filterCity.addEventListener('change', async () => {
+  const search1 = document.querySelector('[data-search1]').value;
+  const search2 = document.querySelector('[data-search2]').value;
+  console.log(search1, search2);
 
   const cardBox = document.querySelector('[data-boxcard]');
   cardBox.remove();
 
   const response = await fetch('/cardlist');
 
-  if (response.ok && !(search === 'Поиск по городу')) {
+  if (response.ok) {
     const allCards = await response.json();
-    cards = allCards.filter((el) => el['User.City.city_name'] === search);
+
+    if (search1 === '0' && search2 === '0') {
+      cards = allCards;
+    } else if (search1 === '0') {
+      cards = allCards.filter((el) => el.title === search2);
+    } else if (search2 === '0') {
+      cards = allCards.filter((el) => el['User.City.city_name'] === search1);
+    } else {
+      cards = allCards.filter((el) => el['User.City.city_name'] === search1 && el.title === search2);
+    }
+
     const findBox = document.querySelector('[data-findbox]');
-
-    findBox.insertAdjacentHTML('afterEnd', '<div id="body" data-boxcard></div>');
-    cards.forEach((el) => {
-      const newCardBox = document.querySelector('[data-boxcard]');
-      newCardBox.insertAdjacentHTML('beforeEnd', showCards(el));
-    });
-  }
-
-  if (response.ok && search === 'Поиск по городу') {
-    cards = await response.json();
-    const findBox = document.querySelector('[data-findbox]');
-
-    findBox.insertAdjacentHTML('afterEnd', '<div id="body" data-boxcard></div>');
+    findBox.insertAdjacentHTML('afterEnd', '<div id="body" data-boxcard class="addcards"></div>');
     cards.forEach((el) => {
       const newCardBox = document.querySelector('[data-boxcard]');
       newCardBox.insertAdjacentHTML('beforeEnd', showCards(el));
