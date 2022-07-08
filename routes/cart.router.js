@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const nodemailer = require('nodemailer');
-const authCheck = require('../middlewares/error');
+const authCheck = require('../middlewares/authCheck');
 const {
   Card, User, Сondition, City, Basket,
 } = require('../db/models');
@@ -48,14 +48,14 @@ router.get('/', authCheck, async (req, res) => {
     include: [{
       model: Card,
       include: [{ model: Сondition },
-        { model: User, include: [{ model: City }] }],
+      { model: User, include: [{ model: City }] }],
     }],
     raw: true,
   });
   res.render('entries/Cart', { addCards });
 });
 
-router.delete('/', async (req, res) => {
+router.delete('/', authCheck, async (req, res) => {
   const { cardDelId } = req.body;
   try {
     await Basket.destroy({ where: { b_card_id: cardDelId } });
@@ -65,7 +65,7 @@ router.delete('/', async (req, res) => {
   }
 });
 
-router.get('/check', async (req, res) => {
+router.get('/check', authCheck, async (req, res) => {
   // mailer('countrvl@yandex.ru');
   const userId = await User.findOne({ where: { name: req.session?.userName } });
   // console.log(userId);
