@@ -25,38 +25,41 @@ crossorigin="anonymous">
   <div class="container-fluid">
     
 
-<select class=" fs-4 form-select w-25 p-3" aria-label="Default select example">
+<select class=" fs-5 form-select w-25 p-2" aria-label="Default select example">
   <option  selected>Поиск по городу</option>
   {{#each allCities}}
   <option value="1">{{this.city_name}}</option>
   {{/each}}
 </select>
 
-<div class="uk-navbar-left"> 
-    <div class="collapse navbar-collapse h4 bg-black" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        {{#if userName}}
-        <li class="nav-item">
-          <a class="nav-link active text-white bg-black" aria-current="page" href="/profile">{{userName}}</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white bg-black" href="/logout">Выйти</a>
-        </li>
-        <li class="nav-item">
-          <a href="/cart"><img class="imgcart" src="/fon/istockphoto-1094337676-170667a.jpeg"  alt="lorem"></a>
-        </li>
-        {{else}}
-        <li class="nav-item">
-          <a class="nav-link text-white bg-black" href="/signin">Войти</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white bg-black" href="/signup">Зарегистрироваться</a>
-        </li>
-        {{/if}}
-        <li class="nav-item">
-          <a class="nav-link text-white bg-black" href="/">Главная</a>
-        </li>
-      </ul>
+{{!-- <div class="uk-navbar-left">  --}}
+    {{!-- <div class="collapse navbar-collapse h4 bg-black" id="navbarSupportedContent"> --}}
+      {{!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0"> --}}
+
+
+<ul class="nav justify-content-end">
+  {{#if userName}}
+  <li class="nav-item">
+    <a class="nav-link active text-white bg-black fs-4" aria-current="page" href="/profile">{{userName}}</a>
+  </li>
+  <li class="nav-item">
+   <a class="nav-link text-white bg-black fs-4" href="/logout">Выйти</a>
+  </li>
+  <li class="nav-item">
+    <a href="/cart"><img class="imgcart" src="/fon/istockphoto-1094337676-170667a.jpeg"  alt="lorem"></a>
+  </li>
+   {{else}}
+     <li class="nav-item">
+    <a class="nav-link active text-white bg-black fs-4" aria-current="page" href="/signin">Войти</a>
+  </li>
+  <li class="nav-item">
+   <a class="nav-link text-white bg-black fs-4" href="/signup">Зарегистрироваться</a>
+  </li>
+{{/if}}
+   <li class="nav-item">
+   <a class="nav-link text-white bg-black fs-4" href="/">Главная</a>
+  </li>
+</ul>
     </div>
     </div>
     
@@ -75,7 +78,7 @@ crossorigin="anonymous">
   </div>
   <div class="card text-center text-white bg-black">
   <div class="card-body ">
-    <p class="card-text">Над проектом старались Владимир, Фредерик, Елизавета, Кирилл .</p>
+    <p class="card-text fst-italic ">Над проектом старались Владимир, Фредерик, Елизавета, Кирилл .</p>
   </div>
   <div class="card-footer text-muted-white ">
     created by tigers
