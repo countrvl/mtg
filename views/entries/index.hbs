@@ -2,46 +2,44 @@
 
 {{#if userName}}
 <div class="d-block p-2 col-md-5 mx-auto border-bottom border-danger  border-4" >
+  <div class="d-flex justify-content-center" >
+      <a href="/cart"><img class="imglogo" src="/fon/221744_znOfRC26Nv_41mztsnrdm.jpeg"  alt="lorem"> </a>
+  </div>
   <div class="h-75 fs-4 text-white  p-3  fst-italic text-center">
-    «Цитадели» — очень интересная игра с оригинальными правилами, которая подойдет любой компании, независимо от возраста!
+ — настольная игра, выпускаемая компанией Wizards of the Coast. Относится к классам коллекционных и логических карточных игр. Игра представляет собой поединок магов-мироходцев, которые используют карты как магические ресурсы чтобы победить противника.
   </div>
 </div>
 {{else}}
 <div class="d-block p-2 col-md-5 mx-auto border-bottom border-danger  border-4" >
   <div class="h-75 fs-4 text-white  p-3  fst-italic text-center">
-    Чтобы иметь возможность приобрести карточки, необходимо зарегестрироваться.
+    Чтобы иметь возможность приобрести карточки, необходимо зарегистрироваться.
   </div>
 </div>
 {{/if}}
 
-    {{!-- <div id="cards">
-        <h2>Список карточек:</h2>
-    </div> --}}
+  <div data-findbox id="listCard">
+    <div>
+      <select data-search1 class=" fs-5 form-select w-25 p-2" aria-label="Default select example">
+        <option value="0" selected>Поиск по городу</option>
+        {{#each allCities}}
+        <option value={{this.city_name}}>{{this.city_name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="d-block p-2" ></div>
+      <div>
+        <select data-search2 class="fs-5 form-select w-25 p-2" aria-label="Default select example">
+          <option value="0" selected>Поиск по названию</option>
+          {{#each allTitles}}
+          <option value='{{this.title}}'>{{this.title}}</option>
+          {{/each}}
+        </select>
+    </div>
+  </div>
 
-<div id="listCard">
-  <div>
-<select class=" fs-5 form-select w-25 p-2" aria-label="Default select example">
-  <option  selected>Поиск по городу</option>
-    {{#each allCities}}
-    <option value="1">{{this.city_name}}</option>
-    {{/each}}
-</select>
-</div>
-<div class="d-block p-2" ></div>
-<div>
-<select class="fs-5 form-select w-25 p-2" aria-label="Default select example">
-  <option  selected>Поиск по названию</option>
-    {{#each allTitles}}
-  <option value="1">{{this.title}}</option>
-  {{/each}}
-</select>
-     <div class="container-fluid"></div>
-       </div>
-       </div>
-
-<div id="body" class="addcards">
+<div data-boxcard id="body" class="addcards">
     {{#each allCards}}
-    <div class="card" id="box">
+    <div  class="card" id="box">
       <div id="title">
             <h3>{{this.title}}</h3>
         </div>
@@ -64,8 +62,9 @@
 
     </div>
         {{/each}}
+  </div>
 
-</div>
+
 </div>
 </div>
 </div>

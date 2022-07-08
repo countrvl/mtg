@@ -6,8 +6,9 @@ const {
 
 router.get('/', async (req, res) => {
   const allCards = await Card.findAll({
+    where: { status: true },
     include: [{ model: User, include: [{ model: City }] },
-      { model: Сondition }],
+    { model: Сondition }],
     raw: true,
   });
   const allCities = await City.findAll();
@@ -75,6 +76,11 @@ router.get('/logout', (req, res) => {
   req.session.destroy();
   res.clearCookie('userId');
   res.redirect('/');
+});
+
+router.get('/cardlist', async (req, res) => {
+  const allCards = await Card.findAll({ include: [{ model: User, include: [{ model: City }] }, { model: Сondition }], raw: true });
+  res.json(allCards);
 });
 
 module.exports = router;

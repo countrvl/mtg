@@ -38,7 +38,6 @@
   justify-content: space-around;
 }
 
-
 .space{
   height: 150px;
 }
@@ -75,6 +74,11 @@ margin: 40px;
 .imgcart{
   height: 60px;
   width: 60px;
+}
+
+.imglogo{
+  /* height:  auto; */
+  /* width: 60px; */
 }
 
 img{
