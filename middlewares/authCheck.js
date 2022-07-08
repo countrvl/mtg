@@ -2,8 +2,8 @@ const authCheck = (req, res, next) => {
   if (req.session?.userName) {
     next();
   } else {
-    res.redirect('/signup');
-    // res.sendStatus(418);
+    res.sendStatus(403);
+    // res.status(418).redirect('/signup');    
   }
 };
 
