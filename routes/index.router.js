@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   const allCards = await Card.findAll({
     where: { status: true },
     include: [{ model: User, include: [{ model: City }] },
-      { model: Сondition }],
+    { model: Сondition }],
     raw: true,
   });
   const allCities = await City.findAll();

@@ -15,12 +15,13 @@
 //     }
 //   }
 // });
-const btnCheck = document.querySelector('#check');
 const body = document.querySelector('#body');
 body.addEventListener('click', async (e) => {
+  console.log('!!');
   if (e.target.tagName === 'BUTTON') {
     if (e.target.name !== 'btnDel') {
-      e.preventDefault();
+      console.log('!!!!');
+      // e.preventDefault();
       const cardId = e.target.id;
       const response = await fetch('/cart/add', {
         method: 'post',
@@ -53,7 +54,8 @@ body.addEventListener('click', async (e) => {
   }
 });
 
-btnCheck.addEventListener('click', async (el) => {
+const btnCheck = document.querySelector('#check');
+btnCheck.addEventListener('click', async () => {
   const response = await fetch('/cart/check');
 
   if (response.ok) {
