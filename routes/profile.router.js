@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
     img,
     price,
     user_id: req.session.userId,
-    wear,
+    condition_id: wear,
   });
   res.redirect('/profile');
 });
