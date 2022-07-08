@@ -12,22 +12,30 @@
 </div>
 {{/if}}
 
-<div id="listCard">
+  <div data-findbox id="listCard">
     <div id="cards">
-        <h2>Список карточек:</h2>
+      <h2>Список карточек:</h2>
     </div>
-     <div class="container-fluid"></div>
-  <select class="form-select w-25 p-3" aria-label="Default select example">
-  <option selected>Поиск по названию</option>
-    {{#each allTitles}}
-  <option value="1">{{this.title}}</option>
-  {{/each}}
-</select>
-       </div>
+    <div style="display:flex;flex-direction:row">
+      <form action="" method="get"></form>
+      <select data-selectCity class="form-select w-25 p-3" aria-label="Default select example">
+        <option selected>Поиск по городу</option>
+        {{#each allCities}}
+        <option value={{this.city_name}}>{{this.city_name}}</option>
+        {{/each}}
+      </select>
+      <select class="form-select w-25 p-3" aria-label="Default select example">
+        <option selected>Поиск по названию</option>
+        {{#each allTitles}}
+        <option>{{this.title}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
 
-<div id="body">
+  <div id="body" data-boxcard>
     {{#each allCards}}
-    <div class="card" id="box">
+    <div  class="card" id="box">
       <div id="title">
             <h3>{{this.title}}</h3>
         </div>
@@ -44,8 +52,9 @@
         </div>
     </div>
         {{/each}}
+  </div>
 
-</div>
+
 </div>
 </div>
 </div>
