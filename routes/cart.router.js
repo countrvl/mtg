@@ -52,7 +52,7 @@ router.get('/', authCheck, async (req, res) => {
     include: [{
       model: Card,
       include: [{ model: Сondition },
-      { model: User, include: [{ model: City }] }],
+        { model: User, include: [{ model: City }] }],
     }],
     raw: true,
   });
