@@ -1,3 +1,5 @@
+<div class="space" ></div>
+
 {{#if userName}}
 <div class="d-block p-2 col-md-5 mx-auto border-bottom border-danger  border-4" >
   <div class="h-75 fs-4 text-white  p-3  fst-italic text-center">
@@ -12,18 +14,29 @@
 </div>
 {{/if}}
 
-<div id="listCard">
-    <div id="cards">
+    {{!-- <div id="cards">
         <h2>Список карточек:</h2>
-    </div>
+    </div> --}}
 
-<select class=" fs-5 form-select w-25 p-3" aria-label="Default select example">
+<div id="listCard">
+  <div>
+<select class=" fs-5 form-select w-25 p-2" aria-label="Default select example">
+  <option  selected>Поиск по городу</option>
+    {{#each allCities}}
+    <option value="1">{{this.city_name}}</option>
+    {{/each}}
+</select>
+</div>
+<div class="d-block p-2" ></div>
+<div>
+<select class="fs-5 form-select w-25 p-2" aria-label="Default select example">
   <option  selected>Поиск по названию</option>
     {{#each allTitles}}
   <option value="1">{{this.title}}</option>
   {{/each}}
 </select>
      <div class="container-fluid"></div>
+       </div>
        </div>
 
 <div id="body" class="addcards">

@@ -1,10 +1,12 @@
-<div id="kor">
-<div id="listCard">
+<div class="space" ></div>
+    <div id="kor">
+        <div class="space2" ></div>
+{{!-- <div id="listCard"> --}}
     <div id="cards">
         <h2>Добавленные карты:</h2>
     {{!-- <button name="btnCheck" id="check" type="button" class=" text-center btn btn-outline-light ">Купить</button> --}}
-        
     </div>
+
 <div id="body" class="buycards">
    {{#each addCards}}
     <div id="box">
@@ -20,13 +22,13 @@
             <p>Город продавца: {{'Card.User.City.city_name'}}</p>
         </div>
         <div>
-        <button name="btnDel" type="button" id={{'Card.id'}} class="btn btn-outline-danger">Delete</button>
+        <button name="btnDel" type="button" id={{'Card.id'}} class="btn btn-outline-danger">Удалить</button>
         </div>
     </div> 
      {{/each}} 
     </div>
 
-    </div>
+    {{!-- </div> --}}
      <div class="d-flex justify-content-center d-grid gap-2">
   <button class="btn btn-success w-50 p-3 btn-lg" name="btnCheck" id="check" type="button">Купить</button>
 </div>
