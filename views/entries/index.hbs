@@ -18,30 +18,29 @@
         <h2>Список карточек:</h2>
     </div> --}}
 
-<div id="listCard">
-  <div>
-<select class=" fs-5 form-select w-25 p-2" aria-label="Default select example">
-  <option  selected>Поиск по городу</option>
-    {{#each allCities}}
-    <option value="1">{{this.city_name}}</option>
-    {{/each}}
-</select>
-</div>
-<div class="d-block p-2" ></div>
-<div>
-<select class="fs-5 form-select w-25 p-2" aria-label="Default select example">
-  <option  selected>Поиск по названию</option>
-    {{#each allTitles}}
-  <option value="1">{{this.title}}</option>
-  {{/each}}
-</select>
-     <div class="container-fluid"></div>
-       </div>
-       </div>
+  <div data-findbox id="listCard">
+    <div>
+      <select data-search1 class=" fs-5 form-select w-25 p-2" aria-label="Default select example">
+        <option value="0" selected>Поиск по городу</option>
+        {{#each allCities}}
+        <option value={{this.city_name}}>{{this.city_name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="d-block p-2" ></div>
+      <div>
+        <select data-search2 class="fs-5 form-select w-25 p-2" aria-label="Default select example">
+          <option value="0" selected>Поиск по названию</option>
+          {{#each allTitles}}
+          <option value='{{this.title}}'>{{this.title}}</option>
+          {{/each}}
+        </select>
+    </div>
+  </div>
 
-<div id="body" class="addcards">
+<div data-boxcard id="body" class="addcards">
     {{#each allCards}}
-    <div class="card" id="box">
+    <div  class="card" id="box">
       <div id="title">
             <h3>{{this.title}}</h3>
         </div>
@@ -64,8 +63,9 @@
 
     </div>
         {{/each}}
+  </div>
 
-</div>
+
 </div>
 </div>
 </div>
