@@ -10,8 +10,8 @@ const {
 // });
 
 router.get('/', async (req, res) => {
-  const allCardsBuy = await Card.findAll({where: {user_id:req.session.userId, status: false }, include: [{ model: User, include: [{ model: City }] }, { model: Сondition }], raw: true });
-  const mySaleCards = await Card.findAll({where: {user_id:req.session.userId, status: true }, include: [{ model: User, include: [{ model: City }] }, { model: Сondition }], raw: true });
+  const allCardsBuy = await Card.findAll({ where: { user_id: req.session.userId, status: false }, include: [{ model: User, include: [{ model: City }] }, { model: Сondition }], raw: true });
+  const mySaleCards = await Card.findAll({ where: { user_id: req.session.userId, status: true }, include: [{ model: User, include: [{ model: City }] }, { model: Сondition }], raw: true });
 
   const allCities = await City.findAll();
   const allСondition = await Сondition.findAll();
@@ -31,8 +31,9 @@ router.post('/', async (req, res) => {
     img,
     price,
     user_id: req.session.userId,
-    wear,
+    condition_id: wear,
   });
+
   res.redirect('/profile');
 });
 module.exports = router;
