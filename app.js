@@ -7,10 +7,8 @@ const FileStore = require('session-file-store')(session);
 const indexRouter = require('./routes/index.router');
 const profileRouter = require('./routes/profile.router');
 const notFoundMiddleware = require('./middlewares/notfound');
-
 const errorMiddleware = require('./middlewares/error');
 const cartRouter = require('./routes/cart.router');
-
 
 const app = express();
 const PORT = 3000 || 3001;
