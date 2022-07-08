@@ -34,10 +34,6 @@ async function mailer(email) {
   return result;
 }
 
-// router.get('/', (req, res) => {
-//   res.render('entries/Cart');
-// });
-
 router.post('/add', authCheck, async (req, res) => {
   const { cardId } = req.body;
   const userId = await User.findOne({ where: { name: req.session?.userName } });
@@ -52,7 +48,7 @@ router.get('/', authCheck, async (req, res) => {
     include: [{
       model: Card,
       include: [{ model: Сondition },
-      { model: User, include: [{ model: City }] }],
+        { model: User, include: [{ model: City }] }],
     }],
     raw: true,
   });
@@ -70,7 +66,7 @@ router.delete('/', async (req, res) => {
 });
 
 router.get('/check', async (req, res) => {
-  mailer('countrvl@yandex.ru');
+  // mailer('countrvl@yandex.ru');
   const userId = await User.findOne({ where: { name: req.session?.userName } });
   // console.log(userId);
   const cards = await Basket.findAll({
@@ -79,6 +75,20 @@ router.get('/check', async (req, res) => {
     raw: true,
   });
   const cardsId = cards.map((el) => el.b_card_id);
+  const emailId = await Basket.findAll({
+    include: [{
+      model: Card,
+      attributes: ['user_id'],
+      include: [{ model: User, attributes: ['email'] }],
+    }],
+    raw: true,
+  });
+  console.log(emailId);
+  let str = '';
+  emailId.forEach((el) => {
+    str += el['Card.User.email'] + ',';
+  });
+  console.log('------->', str);
   try {
     await Card.update({ user_id: userId.id, status: false }, { where: { id: cardsId } });
   } catch (error) {
@@ -86,12 +96,12 @@ router.get('/check', async (req, res) => {
   }
   try {
     await Basket.destroy({ where: { b_user_id: userId.id } });
-    res.sendStatus(200);
   } catch (error) {
     res.sendStatus(418);
   }
   try {
-    // mailer(emails);
+    mailer(str);
+    res.sendStatus(200);
     // res.sendStatus(200);
   } catch (error) {
     res.sendStatus(418);

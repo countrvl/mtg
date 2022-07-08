@@ -7,12 +7,8 @@
   height: 600px;
   width: 400px;
   margin-left: 700px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
-
-/* #search{
-  margin-right: 400px;
-} */
 
 .singin{
   height: 600px;
@@ -21,45 +17,15 @@
   margin-top: 50px;
 }
 
-/* .info{
-  background-color: rgb(86, 130, 137);
-  height: 280px;
-  width: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  text-align: center;
-  padding: 20px;
-  margin-top: 20px;
-  margin-left: 650px;
-  color:white;
-  opacity: 0.7;  
-} */
-/* 
-.info1{
-  background-color: rgb(86, 130, 137);
-  height: 150px;
-  width: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  text-align: center;
-  padding: 20px;
-  margin-top: 20px;
-  margin-left: 650px;
-  color:white;
-  opacity: 0.7;  
-} */
-
-
 .body{
   background-attachment: scroll;
   background-image: url('../fon/1627123702_8-kartinkin-com-p-fon-stim-kosmos-sinii-krasivo-8.jpeg');
   background-size: 1900px;
 }
 
+.space2{
+  height: auto;
+}
 .add{
   height: 470px;
 }
@@ -69,28 +35,31 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-
-  /* flex-direction: column; */
   justify-content: space-around;
 }
 
+
 .space{
-  height: 400px;
+  height: 150px;
 }
 
 #cards{
   background-color: rgb(129, 161, 202);
   height: 60px;
+  width: 470px;
   padding-top: 10px;
   text-indent: 30px;
-  margin: 20px;
   color:white;
   border-radius: 10px;
   opacity: 0.9;  
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-margin: 20px;
+margin: 40px;
+}
+
+#listCard{
+  margin: 40px;
 }
 
 #box{
@@ -126,12 +95,12 @@ img{
   color: rgb(32, 19, 45);
 }
 
-#kor{
+/* #kor{
   background-image: url("../fon/1625576606_1-kartinkin-com-p-fon-bezdna-krasivie-foni-1.jpeg");
-}
+} */
 
 .LK{
   background-image: url("../fon/1643769329_13-abrakadabra-fun-p-mramor-temnii-tekstura-besshovnaya-21.jpeg");
   background-size: 1800px;
-  opacity: 0.7;
+  /* opacity: 0.7; */
 }
