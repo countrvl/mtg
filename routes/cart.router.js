@@ -34,10 +34,6 @@ async function mailer(email) {
   return result;
 }
 
-// router.get('/', (req, res) => {
-//   res.render('entries/Cart');
-// });
-
 router.post('/add', authCheck, async (req, res) => {
   const { cardId } = req.body;
   const userId = await User.findOne({ where: { name: req.session?.userName } });
